@@ -974,7 +974,7 @@ namespace DaRT
             {
                 try
                 {
-                    String ip = host.Text + ":" + port.Text;
+                    String ip = host.Text + ":" + (int.Parse(port.Text) + 1).ToString();
                     String url = String.Format(Settings.Default.bannerUrl, ip);
                     Process.Start(url);
                 }
