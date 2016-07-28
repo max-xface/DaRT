@@ -6,7 +6,7 @@
       <Value Profile="(Default)">127.0.0.1</Value>
     </Setting>
     <Setting Name="port" Type="System.String" Scope="User">
-      <Value Profile="(Default)">2302</Value>
+      <Value Profile="(Default)">2301</Value>
     </Setting>
     <Setting Name="password" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -220,6 +220,9 @@
     </Setting>
     <Setting Name="showUnknownChat" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="gport" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2302</Value>
     </Setting>
   </Settings>
 </SettingsFile>

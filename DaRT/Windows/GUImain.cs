@@ -974,7 +974,7 @@ namespace DaRT
             {
                 try
                 {
-                    String ip = host.Text + ":" + (int.Parse(port.Text) + 1).ToString();
+                    String ip = host.Text + ":" + gport.Text;
                     String url = String.Format(Settings.Default.bannerUrl, ip);
                     Process.Start(url);
                 }
@@ -1799,7 +1799,7 @@ namespace DaRT
                 {
                     banner.Image = GetImage("Downloading server banner...");
                 });
-                String ip = host.Text + ":" + port.Text;
+                String ip = host.Text + ":" + gport.Text;
                 String url = String.Format(Settings.Default.bannerImage, ip);
 
                 HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
@@ -2275,12 +2275,12 @@ namespace DaRT
 
                 Color color = Color.Empty;
                 if (item.Type == LogType.Console)
-                    color = this.GetColor("#000000");
+                    color = this.GetColor("#979BA1");
 
                 else if(item.Type == LogType.GlobalChat)
                     color = this.GetColor("#474747");
                 else if (item.Type == LogType.SideChat)
-                    color = this.GetColor("#19B5D1");
+                    color = this.GetColor("#4285D6");
                 else if (item.Type == LogType.DirectChat)
                     color = this.GetColor("#7F6D8B");
                 else if (item.Type == LogType.VehicleChat)
@@ -2288,7 +2288,7 @@ namespace DaRT
                 else if (item.Type == LogType.CommandChat)
                     color = this.GetColor("#A5861E");
                 else if (item.Type == LogType.GroupChat)
-                    color = this.GetColor("#87B066");
+                    color = this.GetColor("#15B02C");
                 else if (item.Type == LogType.UnknownChat)
                     color = this.GetColor("#4F0061");
                 else if (item.Type == LogType.AdminChat)
@@ -3719,6 +3719,26 @@ namespace DaRT
                 }
                 _queue.Clear();
             }
+        }
+
+        private void password_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void port_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gport_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

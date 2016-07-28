@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUImain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.gport = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.dart = new System.Windows.Forms.PictureBox();
             this.nextRefresh = new System.Windows.Forms.ProgressBar();
             this.execute = new System.Windows.Forms.Button();
@@ -47,6 +49,7 @@
             this.hostLabel = new System.Windows.Forms.Label();
             this.port = new System.Windows.Forms.TextBox();
             this.host = new System.Windows.Forms.TextBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.playersTab = new System.Windows.Forms.TabPage();
@@ -78,7 +81,6 @@
             this.input = new System.Windows.Forms.TextBox();
             this.banner = new System.Windows.Forms.PictureBox();
             this.options = new System.Windows.Forms.ComboBox();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -113,6 +115,9 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(36)))), ((int)(((byte)(40)))));
+            this.splitContainer1.Panel1.Controls.Add(this.gport);
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.dart);
             this.splitContainer1.Panel1.Controls.Add(this.nextRefresh);
             this.splitContainer1.Panel1.Controls.Add(this.execute);
@@ -129,6 +134,7 @@
             this.splitContainer1.Panel1.Controls.Add(this.hostLabel);
             this.splitContainer1.Panel1.Controls.Add(this.port);
             this.splitContainer1.Panel1.Controls.Add(this.host);
+            this.splitContainer1.Panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
             // 
             // splitContainer1.Panel2
             // 
@@ -136,6 +142,30 @@
             this.splitContainer1.Size = new System.Drawing.Size(1184, 571);
             this.splitContainer1.SplitterDistance = 139;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // gport
+            // 
+            this.gport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
+            this.gport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gport.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::DaRT.Properties.Settings.Default, "gport", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.gport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
+            this.gport.Location = new System.Drawing.Point(8, 232);
+            this.gport.Name = "gport";
+            this.gport.Size = new System.Drawing.Size(120, 20);
+            this.gport.TabIndex = 24;
+            this.gport.Text = global::DaRT.Properties.Settings.Default.gport;
+            this.gport.TextChanged += new System.EventHandler(this.gport_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(48, 216);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "GT Port";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dart
             // 
@@ -151,7 +181,7 @@
             // 
             // nextRefresh
             // 
-            this.nextRefresh.Location = new System.Drawing.Point(9, 339);
+            this.nextRefresh.Location = new System.Drawing.Point(8, 366);
             this.nextRefresh.Maximum = 10;
             this.nextRefresh.Name = "nextRefresh";
             this.nextRefresh.Size = new System.Drawing.Size(120, 10);
@@ -172,12 +202,17 @@
             // 
             // hosts
             // 
-            this.hosts.Location = new System.Drawing.Point(9, 362);
+            this.hosts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
+            this.hosts.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(43)))), ((int)(((byte)(49)))));
+            this.hosts.FlatAppearance.BorderSize = 0;
+            this.hosts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(43)))), ((int)(((byte)(49)))));
+            this.hosts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(43)))), ((int)(((byte)(49)))));
+            this.hosts.Location = new System.Drawing.Point(8, 389);
             this.hosts.Name = "hosts";
             this.hosts.Size = new System.Drawing.Size(120, 23);
             this.hosts.TabIndex = 18;
             this.hosts.Text = "Load host";
-            this.hosts.UseVisualStyleBackColor = true;
+            this.hosts.UseVisualStyleBackColor = false;
             this.hosts.Click += new System.EventHandler(this.hosts_Click);
             // 
             // settings
@@ -204,7 +239,7 @@
             // lastRefresh
             // 
             this.lastRefresh.AutoSize = true;
-            this.lastRefresh.Location = new System.Drawing.Point(17, 321);
+            this.lastRefresh.Location = new System.Drawing.Point(16, 348);
             this.lastRefresh.Name = "lastRefresh";
             this.lastRefresh.Size = new System.Drawing.Size(100, 13);
             this.lastRefresh.TabIndex = 12;
@@ -212,48 +247,55 @@
             // 
             // refresh
             // 
+            this.refresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
             this.refresh.Enabled = false;
-            this.refresh.Location = new System.Drawing.Point(9, 295);
+            this.refresh.Location = new System.Drawing.Point(8, 322);
             this.refresh.Name = "refresh";
             this.refresh.Size = new System.Drawing.Size(120, 23);
             this.refresh.TabIndex = 9;
             this.refresh.Text = "Refresh (F5)";
-            this.refresh.UseVisualStyleBackColor = true;
+            this.refresh.UseVisualStyleBackColor = false;
             this.refresh.Click += new System.EventHandler(this.refresh_Click);
             // 
             // disconnect
             // 
+            this.disconnect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
             this.disconnect.Enabled = false;
-            this.disconnect.Location = new System.Drawing.Point(9, 266);
+            this.disconnect.Location = new System.Drawing.Point(8, 293);
             this.disconnect.Name = "disconnect";
             this.disconnect.Size = new System.Drawing.Size(120, 23);
             this.disconnect.TabIndex = 8;
             this.disconnect.Text = "Disconnect";
-            this.disconnect.UseVisualStyleBackColor = true;
+            this.disconnect.UseVisualStyleBackColor = false;
             this.disconnect.Click += new System.EventHandler(this.disconnect_Click);
             // 
             // connect
             // 
-            this.connect.Location = new System.Drawing.Point(9, 237);
+            this.connect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
+            this.connect.Location = new System.Drawing.Point(8, 264);
             this.connect.Name = "connect";
             this.connect.Size = new System.Drawing.Size(120, 23);
             this.connect.TabIndex = 6;
             this.connect.Text = "Connect";
-            this.connect.UseVisualStyleBackColor = true;
+            this.connect.UseVisualStyleBackColor = false;
             this.connect.Click += new System.EventHandler(this.connect_Click);
             // 
             // password
             // 
-            this.password.Location = new System.Drawing.Point(9, 211);
+            this.password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
+            this.password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.password.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
+            this.password.Location = new System.Drawing.Point(8, 184);
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(120, 20);
             this.password.TabIndex = 5;
             this.password.UseSystemPasswordChar = true;
+            this.password.TextChanged += new System.EventHandler(this.password_TextChanged);
             // 
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(44, 195);
+            this.passwordLabel.Location = new System.Drawing.Point(48, 168);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(53, 13);
             this.passwordLabel.TabIndex = 4;
@@ -263,7 +305,7 @@
             // portLabel
             // 
             this.portLabel.AutoSize = true;
-            this.portLabel.Location = new System.Drawing.Point(55, 156);
+            this.portLabel.Location = new System.Drawing.Point(59, 129);
             this.portLabel.Name = "portLabel";
             this.portLabel.Size = new System.Drawing.Size(26, 13);
             this.portLabel.TabIndex = 3;
@@ -273,7 +315,7 @@
             // hostLabel
             // 
             this.hostLabel.AutoSize = true;
-            this.hostLabel.Location = new System.Drawing.Point(55, 117);
+            this.hostLabel.Location = new System.Drawing.Point(59, 90);
             this.hostLabel.Name = "hostLabel";
             this.hostLabel.Size = new System.Drawing.Size(29, 13);
             this.hostLabel.TabIndex = 2;
@@ -282,17 +324,29 @@
             // 
             // port
             // 
-            this.port.Location = new System.Drawing.Point(9, 172);
+            this.port.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
+            this.port.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.port.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
+            this.port.Location = new System.Drawing.Point(8, 144);
             this.port.Name = "port";
             this.port.Size = new System.Drawing.Size(120, 20);
             this.port.TabIndex = 1;
+            this.port.TextChanged += new System.EventHandler(this.port_TextChanged);
             // 
             // host
             // 
-            this.host.Location = new System.Drawing.Point(9, 133);
+            this.host.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
+            this.host.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.host.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
+            this.host.Location = new System.Drawing.Point(8, 104);
             this.host.Name = "host";
             this.host.Size = new System.Drawing.Size(120, 20);
             this.host.TabIndex = 0;
+            // 
+            // timer
+            // 
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // splitContainer2
             // 
@@ -357,9 +411,10 @@
             this.playerList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.playerList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
             this.playerList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.playerList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
             this.playerList.FullRowSelect = true;
-            this.playerList.GridLines = true;
             this.playerList.Location = new System.Drawing.Point(0, 0);
             this.playerList.MultiSelect = false;
             this.playerList.Name = "playerList";
@@ -472,6 +527,7 @@
             // 
             this.counter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.counter.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.counter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
             this.counter.Location = new System.Drawing.Point(92, 215);
             this.counter.Margin = new System.Windows.Forms.Padding(0);
             this.counter.Name = "counter";
@@ -486,6 +542,7 @@
             this.allowMessages.AutoSize = true;
             this.allowMessages.Checked = true;
             this.allowMessages.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.allowMessages.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
             this.allowMessages.Location = new System.Drawing.Point(825, 3);
             this.allowMessages.Name = "allowMessages";
             this.allowMessages.Size = new System.Drawing.Size(124, 17);
@@ -527,9 +584,11 @@
             // 
             // all
             // 
+            this.all.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(36)))), ((int)(((byte)(40)))));
             this.all.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.all.Dock = System.Windows.Forms.DockStyle.Fill;
             this.all.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.all.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.all.Location = new System.Drawing.Point(0, 0);
             this.all.Margin = new System.Windows.Forms.Padding(0);
             this.all.Name = "all";
@@ -551,6 +610,7 @@
             // 
             // console
             // 
+            this.console.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(36)))), ((int)(((byte)(40)))));
             this.console.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.console.Dock = System.Windows.Forms.DockStyle.Fill;
             this.console.Font = new System.Drawing.Font("Segoe UI", 8.5F);
@@ -575,6 +635,7 @@
             // 
             // chat
             // 
+            this.chat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(36)))), ((int)(((byte)(40)))));
             this.chat.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chat.Font = new System.Drawing.Font("Segoe UI", 8.5F);
@@ -599,9 +660,11 @@
             // 
             // logs
             // 
+            this.logs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(36)))), ((int)(((byte)(40)))));
             this.logs.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.logs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logs.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.logs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
             this.logs.Location = new System.Drawing.Point(0, 0);
             this.logs.Margin = new System.Windows.Forms.Padding(0);
             this.logs.Name = "logs";
@@ -637,6 +700,7 @@
             // 
             this.autoRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.autoRefresh.AutoSize = true;
+            this.autoRefresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
             this.autoRefresh.Location = new System.Drawing.Point(954, 3);
             this.autoRefresh.Name = "autoRefresh";
             this.autoRefresh.Size = new System.Drawing.Size(88, 17);
@@ -657,6 +721,7 @@
             // searchLabel
             // 
             this.searchLabel.AutoSize = true;
+            this.searchLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
             this.searchLabel.Location = new System.Drawing.Point(4, 4);
             this.searchLabel.Name = "searchLabel";
             this.searchLabel.Size = new System.Drawing.Size(44, 13);
@@ -715,16 +780,12 @@
             this.options.TabIndex = 3;
             this.options.SelectedIndexChanged += new System.EventHandler(this.options_SelectedIndexChanged);
             // 
-            // timer
-            // 
-            this.timer.Interval = 1000;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
             // GUImain
             // 
-            //this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1184, 571);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(36)))), ((int)(((byte)(40)))));
+            this.ClientSize = new System.Drawing.Size(1184, 575);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -813,6 +874,8 @@
         public System.Windows.Forms.ProgressBar nextRefresh;
         private System.Windows.Forms.Label counter;
         private System.Windows.Forms.PictureBox dart;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox gport;
     }
 }
 
