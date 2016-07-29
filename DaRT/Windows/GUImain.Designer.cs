@@ -51,6 +51,10 @@
             this.host = new System.Windows.Forms.TextBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.playerCounter = new System.Windows.Forms.Label();
+            this.news = new System.Windows.Forms.Label();
+            this.banCounter = new System.Windows.Forms.Label();
+            this.adminCounter = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.playersTab = new System.Windows.Forms.TabPage();
             this.playerList = new System.Windows.Forms.ListView();
@@ -58,10 +62,6 @@
             this.bansList = new System.Windows.Forms.ListView();
             this.playerdatabaseTab = new System.Windows.Forms.TabPage();
             this.playerDBList = new System.Windows.Forms.ListView();
-            this.playerCounter = new System.Windows.Forms.Label();
-            this.news = new System.Windows.Forms.Label();
-            this.banCounter = new System.Windows.Forms.Label();
-            this.adminCounter = new System.Windows.Forms.Label();
             this.counter = new System.Windows.Forms.Label();
             this.allowMessages = new System.Windows.Forms.CheckBox();
             this.logTabs = new System.Windows.Forms.TabControl();
@@ -191,13 +191,15 @@
             // execute
             // 
             this.execute.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.execute.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
             this.execute.Enabled = false;
+            this.execute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.execute.Location = new System.Drawing.Point(9, 507);
             this.execute.Name = "execute";
             this.execute.Size = new System.Drawing.Size(120, 23);
             this.execute.TabIndex = 20;
             this.execute.Text = "Execute...";
-            this.execute.UseVisualStyleBackColor = true;
+            this.execute.UseVisualStyleBackColor = false;
             this.execute.Click += new System.EventHandler(this.execute_Click);
             // 
             // hosts
@@ -207,6 +209,7 @@
             this.hosts.FlatAppearance.BorderSize = 0;
             this.hosts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(43)))), ((int)(((byte)(49)))));
             this.hosts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(43)))), ((int)(((byte)(49)))));
+            this.hosts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hosts.Location = new System.Drawing.Point(8, 389);
             this.hosts.Name = "hosts";
             this.hosts.Size = new System.Drawing.Size(120, 23);
@@ -218,12 +221,14 @@
             // settings
             // 
             this.settings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.settings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
+            this.settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.settings.Location = new System.Drawing.Point(9, 536);
             this.settings.Name = "settings";
             this.settings.Size = new System.Drawing.Size(120, 23);
             this.settings.TabIndex = 17;
             this.settings.Text = "Settings";
-            this.settings.UseVisualStyleBackColor = true;
+            this.settings.UseVisualStyleBackColor = false;
             this.settings.Click += new System.EventHandler(this.settings_Click);
             // 
             // logo
@@ -249,6 +254,7 @@
             // 
             this.refresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
             this.refresh.Enabled = false;
+            this.refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refresh.Location = new System.Drawing.Point(8, 322);
             this.refresh.Name = "refresh";
             this.refresh.Size = new System.Drawing.Size(120, 23);
@@ -261,6 +267,7 @@
             // 
             this.disconnect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
             this.disconnect.Enabled = false;
+            this.disconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.disconnect.Location = new System.Drawing.Point(8, 293);
             this.disconnect.Name = "disconnect";
             this.disconnect.Size = new System.Drawing.Size(120, 23);
@@ -272,6 +279,7 @@
             // connect
             // 
             this.connect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
+            this.connect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.connect.Location = new System.Drawing.Point(8, 264);
             this.connect.Name = "connect";
             this.connect.Size = new System.Drawing.Size(120, 23);
@@ -357,11 +365,11 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.tabControl);
             this.splitContainer2.Panel1.Controls.Add(this.playerCounter);
             this.splitContainer2.Panel1.Controls.Add(this.news);
             this.splitContainer2.Panel1.Controls.Add(this.banCounter);
             this.splitContainer2.Panel1.Controls.Add(this.adminCounter);
+            this.splitContainer2.Panel1.Controls.Add(this.tabControl);
             this.splitContainer2.Panel1MinSize = 0;
             // 
             // splitContainer2.Panel2
@@ -381,6 +389,50 @@
             this.splitContainer2.Size = new System.Drawing.Size(1041, 571);
             this.splitContainer2.SplitterDistance = 329;
             this.splitContainer2.TabIndex = 21;
+            // 
+            // playerCounter
+            // 
+            this.playerCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.playerCounter.AutoSize = true;
+            this.playerCounter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(133)))), ((int)(((byte)(214)))));
+            this.playerCounter.Location = new System.Drawing.Point(823, 4);
+            this.playerCounter.Name = "playerCounter";
+            this.playerCounter.Size = new System.Drawing.Size(53, 13);
+            this.playerCounter.TabIndex = 16;
+            this.playerCounter.Text = "Players: 0";
+            // 
+            // news
+            // 
+            this.news.AutoSize = true;
+            this.news.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(133)))), ((int)(((byte)(214)))));
+            this.news.Location = new System.Drawing.Point(252, 4);
+            this.news.Name = "news";
+            this.news.Size = new System.Drawing.Size(82, 13);
+            this.news.TabIndex = 19;
+            this.news.Text = "Loading news...";
+            this.news.Click += new System.EventHandler(this.news_Click);
+            // 
+            // banCounter
+            // 
+            this.banCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.banCounter.AutoSize = true;
+            this.banCounter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            this.banCounter.Location = new System.Drawing.Point(965, 4);
+            this.banCounter.Name = "banCounter";
+            this.banCounter.Size = new System.Drawing.Size(43, 13);
+            this.banCounter.TabIndex = 17;
+            this.banCounter.Text = "Bans: 0";
+            // 
+            // adminCounter
+            // 
+            this.adminCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.adminCounter.AutoSize = true;
+            this.adminCounter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(65)))), ((int)(((byte)(124)))));
+            this.adminCounter.Location = new System.Drawing.Point(896, 4);
+            this.adminCounter.Name = "adminCounter";
+            this.adminCounter.Size = new System.Drawing.Size(53, 13);
+            this.adminCounter.TabIndex = 18;
+            this.adminCounter.Text = "Admins: 0";
             // 
             // tabControl
             // 
@@ -438,10 +490,11 @@
             // bansList
             // 
             this.bansList.AllowColumnReorder = true;
+            this.bansList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
             this.bansList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.bansList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bansList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
             this.bansList.FullRowSelect = true;
-            this.bansList.GridLines = true;
             this.bansList.Location = new System.Drawing.Point(0, 0);
             this.bansList.MultiSelect = false;
             this.bansList.Name = "bansList";
@@ -467,10 +520,11 @@
             // playerDBList
             // 
             this.playerDBList.AllowColumnReorder = true;
+            this.playerDBList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
             this.playerDBList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.playerDBList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.playerDBList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
             this.playerDBList.FullRowSelect = true;
-            this.playerDBList.GridLines = true;
             this.playerDBList.Location = new System.Drawing.Point(0, 0);
             this.playerDBList.MultiSelect = false;
             this.playerDBList.Name = "playerDBList";
@@ -482,46 +536,6 @@
             this.playerDBList.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.playerDBList_ColumnClick);
             this.playerDBList.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.playerDBList_RetrieveVirtualItem);
             this.playerDBList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.playerDBList_MouseDown);
-            // 
-            // playerCounter
-            // 
-            this.playerCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.playerCounter.AutoSize = true;
-            this.playerCounter.Location = new System.Drawing.Point(823, 4);
-            this.playerCounter.Name = "playerCounter";
-            this.playerCounter.Size = new System.Drawing.Size(53, 13);
-            this.playerCounter.TabIndex = 16;
-            this.playerCounter.Text = "Players: 0";
-            // 
-            // news
-            // 
-            this.news.AutoSize = true;
-            this.news.Location = new System.Drawing.Point(252, 4);
-            this.news.Name = "news";
-            this.news.Size = new System.Drawing.Size(82, 13);
-            this.news.TabIndex = 19;
-            this.news.Text = "Loading news...";
-            this.news.Click += new System.EventHandler(this.news_Click);
-            // 
-            // banCounter
-            // 
-            this.banCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.banCounter.AutoSize = true;
-            this.banCounter.Location = new System.Drawing.Point(965, 4);
-            this.banCounter.Name = "banCounter";
-            this.banCounter.Size = new System.Drawing.Size(43, 13);
-            this.banCounter.TabIndex = 17;
-            this.banCounter.Text = "Bans: 0";
-            // 
-            // adminCounter
-            // 
-            this.adminCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.adminCounter.AutoSize = true;
-            this.adminCounter.Location = new System.Drawing.Point(896, 4);
-            this.adminCounter.Name = "adminCounter";
-            this.adminCounter.Size = new System.Drawing.Size(53, 13);
-            this.adminCounter.TabIndex = 18;
-            this.adminCounter.Text = "Admins: 0";
             // 
             // counter
             // 
@@ -588,7 +602,7 @@
             this.all.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.all.Dock = System.Windows.Forms.DockStyle.Fill;
             this.all.Font = new System.Drawing.Font("Segoe UI", 8.5F);
-            this.all.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.all.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
             this.all.Location = new System.Drawing.Point(0, 0);
             this.all.Margin = new System.Windows.Forms.Padding(0);
             this.all.Name = "all";
@@ -614,6 +628,7 @@
             this.console.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.console.Dock = System.Windows.Forms.DockStyle.Fill;
             this.console.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.console.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
             this.console.Location = new System.Drawing.Point(0, 0);
             this.console.Margin = new System.Windows.Forms.Padding(0);
             this.console.Name = "console";
@@ -639,6 +654,7 @@
             this.chat.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chat.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.chat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
             this.chat.Location = new System.Drawing.Point(0, 0);
             this.chat.Margin = new System.Windows.Forms.Padding(0);
             this.chat.Name = "chat";
@@ -678,6 +694,9 @@
             // 
             this.search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(36)))), ((int)(((byte)(40)))));
+            this.search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
             this.search.Location = new System.Drawing.Point(196, 1);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(534, 20);
@@ -688,12 +707,15 @@
             // searchButton
             // 
             this.searchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
+            this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.searchButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
             this.searchButton.Location = new System.Drawing.Point(736, -1);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(83, 23);
             this.searchButton.TabIndex = 20;
             this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.UseVisualStyleBackColor = false;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // autoRefresh
@@ -710,7 +732,10 @@
             // 
             // filter
             // 
+            this.filter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
             this.filter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.filter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.filter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
             this.filter.FormattingEnabled = true;
             this.filter.Location = new System.Drawing.Point(54, 0);
             this.filter.Name = "filter";
@@ -746,7 +771,10 @@
             "update"});
             this.input.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.input.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.input.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(36)))), ((int)(((byte)(40)))));
+            this.input.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.input.Enabled = false;
+            this.input.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.input.Location = new System.Drawing.Point(145, 215);
             this.input.MaxLength = 400;
             this.input.Name = "input";
@@ -769,7 +797,10 @@
             // options
             // 
             this.options.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.options.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(23)))));
             this.options.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.options.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.options.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(155)))), ((int)(((byte)(161)))));
             this.options.FormattingEnabled = true;
             this.options.Items.AddRange(new object[] {
             "Say Global",

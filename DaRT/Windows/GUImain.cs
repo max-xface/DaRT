@@ -2292,7 +2292,7 @@ namespace DaRT
                 else if (item.Type == LogType.UnknownChat)
                     color = this.GetColor("#4F0061");
                 else if (item.Type == LogType.AdminChat)
-                    color = this.GetColor("#B20600");
+                    color = this.GetColor("#C7417C");
 
                 else if (item.Type == LogType.ScriptsLog)
                     color = this.GetColor("#7E0500");

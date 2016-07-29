@@ -66,20 +66,19 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>A5320E3067012CE6392054EA8F48472740B3E68B</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>164BA43CA38CCF551249828DF22B70DCBCF7D8E4</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>DaRT_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>DaRT_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>DaRT_1_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>Internet</TargetZone>
@@ -90,6 +89,12 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>DaRT.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BattleNET, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -241,6 +246,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="DaRT_1_TemporaryKey.pfx" />
     <None Include="data\db\dart.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
